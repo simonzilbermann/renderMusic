@@ -1,0 +1,17 @@
+<section class="products">
+    
+   
+    <div class="product-card.one">
+        <i *ngIf="product.isFavorite" class="fa fa-star favorite"></i>
+        <div class="product-image">
+            <img class="image" [src]="product.image"  width="300px" height="300px"/>
+        </div><br>
+        <div class="product-details">
+            <h2 class="text">{{ product.title }}</h2><br>
+            <span class="text">{{product.price}}$</span><br><br>
+            <span [class]="{popular:product.sellNo > 19,notPopular:product.sellNo < 20}" *ngIf="product.sellNo">Ordered {{product.sellNo}} Times</span><br><br>
+            <span>Added {{product.openDate.toString().slice(6,8)+"."+product.openDate.toString().slice(4,6)+"."+product.openDate.toString().slice(0,4)}}</span><br><br>
+            <button class="backBtn" (click)="goBack()">Back</button>
+        </div> 
+    </div>
+</section>    

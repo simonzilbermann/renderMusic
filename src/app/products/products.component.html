@@ -1,0 +1,19 @@
+<section class="products">
+    <ng-container *ngFor="let product of products">
+        <div routerLink="/details/{{product.id}}" class="product-card" *ngIf="!filterByCategory || filterByCategory == product.category">       
+            <i *ngIf="product.isFavorite" class="fa fa-star favorite"></i>
+            <div class="product-image">
+                <img class="image" [src]="product.image" width="300px" height="300px"/>             
+            </div>
+            <div class="product-info">
+                <h4>{{ product.title }}</h4><br>
+                <audio controls>
+                    <source [src]="product.music" type="audio/mpeg">
+                  </audio>                     
+                <h5>{{product.price}}$</h5>
+                <p *ngIf="product.sellNo" [class]="{popular:product.sellNo > 19,notPopular:product.sellNo < 19}">Sells Amount:{{product.sellNo}}</p>
+                <label>Added {{product.openDate.toString().slice(6,8)+"."+product.openDate.toString().slice(4,6)+"."+product.openDate.toString().slice(0,4)}}</label>
+            </div>   
+        </div>
+    </ng-container>
+</section>
